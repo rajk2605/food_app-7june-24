@@ -1,0 +1,79 @@
+<html>
+<head>
+	<title> Food App By Raj </title>
+	<style>
+		*{font-size:30px}
+		body{background-color:lightblue;}
+		.btn{width:20%;}
+		input[type= "radio"]{width:2%; height:0.4em;}
+	</style>
+</title>
+</head>
+
+<body>
+<center>
+	<h1> Food You Like App </h1>
+	<form onsubmit="show()">
+		<input type="text" placeholder="Enter Your Name" id="name" />
+		<br><br>
+		<input type="radio" name="f" id="si" checked=true />South Indian
+		<input type="radio" name="f" id="ni"  />North Indian
+		<input type="radio" name="f" id="ff"  />Fast Food
+		<br><br>
+		<input type="submit" class="btn" />
+
+	</form>
+	<h2 id="msg" />
+
+	<script>
+		function show()
+		{
+			event.preventDefault();
+			let name = document.getElementById("name");
+			let ni = document.getElementById("ni");
+			let si = document.getElementById("si");
+			let ff = document.getElementById("ff");
+			let msg = document.getElementById("msg");
+
+
+			if (name.value == "")
+			{
+			alert("Name cannot be Blank");
+			msg.innerHTML ="";
+			name.focus();
+			return;
+			}	
+
+			if (name.value.trim() == "")
+			{
+			alert("Name cannot be Blank Spaces");
+			msg.innerHTML ="";
+			name.value ="";
+			name.focus();
+			return;
+			}	
+
+			if (!name.value.match(/^[A-Za-z ]+$/))
+			{
+			alert("Name can contain only alphabets");
+			msg.innerHTML ="";
+			name.value ="";
+			name.focus();
+			return;
+			}
+
+			let choice = "";
+			if (ni.checked)		choice="North Indian";
+			else if (si.checked)    choice ="South Indian";
+			else if (ff.checked)    choice ="Fast Food";
+
+			let ans = "Name = " + name.value + "Choice =" +choice;
+			msg.innerHTML = ans;
+
+		}
+
+	</script>
+
+</body>
+</center>
+</html>
